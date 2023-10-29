@@ -1,0 +1,1001 @@
+/* Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Poppins:wght@400;500;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /* Colors */
+  --first-color: hsl(180, 50%, 40%);  
+  --gradient-color: linear-gradient(90deg,
+                    hsl(175, 45%, 35%), 
+                    hsl(185, 55%, 45%)); 
+  --title-color: hsl(180, 42%, 30%);  
+  --text-color: hsl(180, 20%, 20%);  
+  --white-color: #fff;
+  --body-color: hsl(180, 55%, 95%);  
+
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+  --second-font: "Lora", serif;
+  --biggest-font-size: 2.25rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /* Font weightv*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /* z index*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  background-image: url(/assets/img/—Pngtree—school\ of\ fish_5634103.png); /* Add this line */
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-attachment: fixed; 
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* REUSABLE CSS CLASSES */
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.main {
+  overflow: hidden; /* For animation */
+}
+
+/* HEADER & NAV */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--body-color);
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  width: 36px;
+}
+
+.nav__toggle, 
+.nav__close {
+  display: inline-flex;
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1023px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background-color: var(--body-color);
+    width: 100%;
+    box-shadow: 0 1px 16px hsla(210, 55%, 24%, .1);
+    padding-block: 3.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    transition: top .4s;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 2rem;
+}
+
+.nav__link {
+  color: var(--title-color);
+  transition: color .3s;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: .75rem;
+}
+
+.nav__button-link, 
+.nav__button-ghost {
+  display: inline-block;
+  color: var(--title-color);
+}
+
+.nav__button-ghost {
+  background-color: hsla(0, 0%, 100%, .3);
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--title-color);
+  border-radius: .75rem;
+}
+
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+/* Show menu */
+.show-menu {
+  top: 0;
+}
+
+/* Change background header */
+.bg-header {
+  box-shadow: 0 1px 16px hsla(210, 55%, 24%, .12);
+}
+
+/* Home */
+.home {
+  position: relative;
+}
+
+.home__container {
+  padding-top: 8rem;
+  height: 100vh;
+}
+
+.home__content {
+  position: relative;
+  z-index: 2;
+}
+
+.home__data {
+  display: grid;
+  row-gap: .5rem;
+}
+
+.home__subtitle {
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  letter-spacing: 3px;
+}
+
+.home__title {
+  font-size: var(--biggest-font-size);
+  font-family: var(--second-font);
+  color: var(--title-color);
+}
+
+.home__description {
+  margin-bottom: 2.5rem;
+}
+
+.home__button {
+  display: inline-block;
+  background: var(--gradient-color);
+  color: var(--white-color);
+  width: max-content;
+  padding: 1rem 2rem;
+  border-radius: .75rem;
+  box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 305px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .home__title {
+    font-size: 2rem;
+  }
+}
+
+/* For taller devices */
+@media screen and (min-width: 376px) and (min-height: 800px) {
+  .home__container {
+    padding-top: 10rem;
+  }
+  .home__images img {
+    width: 700px;
+    left: -12rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 480px) {
+  
+}
+
+/* For large devices */
+@media screen and (min-width: 1023px) {
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+    column-gap: 4rem;
+  }
+  .nav__toggle, 
+  .nav__close {
+    display: none;
+  }
+  .nav__menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav__list {
+    flex-direction: row;
+    column-gap: 5rem;
+  }
+  .nav__buttons {
+    flex-direction: row;
+    column-gap: 3rem;
+  }
+  .nav__logo {
+    width: 48px;
+  }
+
+  .home__content {
+    max-width: 550px;
+  }
+  .home__data {
+    row-gap: 1rem;
+  }
+  .home__subtitle {
+    font-size: var(--normal-font-size);
+  }
+  .home__description {
+    margin-bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .container {
+    margin-inline: auto;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .home__container {
+    height: 950px;
+    padding-top: 10rem;
+  }
+  .home__bird-1, .home__bird-2 {
+    width: 80px;
+  }
+  .home__bird-1 {
+    bottom: -7rem;
+    left: -7rem;
+  }
+  .home__bird-2 {
+    top: 0;
+    right: -6rem;
+  }
+  .home__images img {
+    bottom: -3rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: .6rem;
+    border-radius: .5rem;
+    background-color: hsl(220, 24%, 15%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(220, 24%, 25%);
+    border-radius: .5rem;
+  }
+}
+
+/* For 2K resolutions (2048 x 1152) */
+@media screen and (min-width: 2048px) {
+  .container {
+    max-width: 1300px;
+  }
+  .home__container {
+    height: 1200px;
+    padding-top: 15rem;
+  }
+}
+.main-image {
+  width: 500%;      
+  max-width: 800px; 
+  display: block;   
+  margin: 20px auto; 
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+/*towns*/
+
+details {
+    margin: 10rem 0;
+    border: 1px solid var(--first-color);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+summary {
+    padding: 0rem;
+    cursor: pointer;
+    background-color: var(--gradient-color);
+    color: var(--white-color);
+    font-weight: var(--font-semi-bold);
+}
+
+summary::-webkit-details-marker { /* Hide default arrow in Chrome & Safari */
+  display: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--first-color);
+    background-color: var(--body-color);
+}
+
+ul li:first-child { /* Removes the border for the first item */
+    border-top: none;
+}
+
+ul li:hover {
+    background-color: var(--white-color);
+}
+
+/* Style for the dropdown containing town names */
+.select-town {
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+/* Style for the town names in the summary element */
+summary {
+  color: var(--text-color); 
+  font-family: var(--body-font); 
+  font-size: var(--normal-font-size); 
+  font-weight: var(--font-medium); 
+  cursor: pointer; 
+  padding: 10px; 
+  transition: color 0.3s; 
+}
+
+/* Hover effect for the summary element */
+summary:hover {
+  color: var(--highlight-color); /* Change to a different color or shade for hover effect */
+}
+
+.spot__title {
+  font-size: 8cqmax;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.spot__description {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: justify;
+  font-size: 1.2rem;
+}
+
+.spot__map {
+  margin-top: 30px;
+}
+
+#map {
+  flex: auto;
+  width: 100px;  /* Adjust the width as per your preference */
+  height: 700px; /* Adjust the height as per your preference */
+  border-radius: 50px;  /* Optional: Adds rounded corners */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: Adds a light shadow */
+
+}
+.map-description-container {
+  display: flex;
+  gap: 2rem; /* Adjust the space between the map and description */
+  align-items: flex-start; /* To align the top of the map and description */
+}
+
+#map, 
+.spot__description {
+  flex: 1; /* This ensures they take up equal width */
+}
+
+#map {
+  height: 400px; /* Adjust the height as necessary */
+  background-color: #f5f5f5; /* Default background color while the map loads */
+  margin-right: 20%;
+}
+
+.spot__description {
+  max-width: 50%; /* Ensures it doesn't expand beyond half the container's width */
+  padding: 1rem; /* For some breathing space around the description */
+}
+.map-description-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bordered-list {
+  flex: 1;
+  margin-left: 20%;
+  margin-right: 20px; /* To provide spacing between the list and the map */
+}
+
+.bordered-list li {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 5px 0;
+  list-style-type: none; /* To remove bullet points */
+}
+
+#map {
+  flex: 1;
+  height: 400px; /* Example height, adjust as needed */
+}
+
+/* Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Poppins:wght@400;500;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /* Colors */
+  --first-color: hsl(180, 50%, 40%);  
+  --gradient-color: linear-gradient(90deg,
+                    hsl(175, 45%, 35%), 
+                    hsl(185, 55%, 45%)); 
+  --title-color: hsl(180, 42%, 30%);  
+  --text-color: hsl(180, 20%, 20%);  
+  --white-color: #fff;
+  --body-color: hsl(180, 55%, 95%);  
+
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+  --second-font: "Lora", serif;
+  --biggest-font-size: 2.25rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /* Font weightv*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /* z index*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  background-image: url(/assets/img/—Pngtree—school\ of\ fish_5634103.png); /* Add this line */
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-attachment: fixed; 
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* REUSABLE CSS CLASSES */
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.main {
+  overflow: hidden; /* For animation */
+}
+
+/* HEADER & NAV */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--body-color);
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  width: 36px;
+}
+
+.nav__toggle, 
+.nav__close {
+  display: inline-flex;
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1023px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background-color: var(--body-color);
+    width: 100%;
+    box-shadow: 0 1px 16px hsla(210, 55%, 24%, .1);
+    padding-block: 3.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    transition: top .4s;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 2rem;
+}
+
+.nav__link {
+  color: var(--title-color);
+  transition: color .3s;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: .75rem;
+}
+
+.nav__button-link, 
+.nav__button-ghost {
+  display: inline-block;
+  color: var(--title-color);
+}
+
+.nav__button-ghost {
+  background-color: hsla(0, 0%, 100%, .3);
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--title-color);
+  border-radius: .75rem;
+}
+
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+/* Show menu */
+.show-menu {
+  top: 0;
+}
+
+/* Change background header */
+.bg-header {
+  box-shadow: 0 1px 16px hsla(210, 55%, 24%, .12);
+}
+
+/* Home */
+.home {
+  position: relative;
+}
+
+.home__container {
+  padding-top: 8rem;
+  height: 100vh;
+}
+
+.home__content {
+  position: relative;
+  z-index: 2;
+}
+
+.home__data {
+  display: grid;
+  row-gap: .5rem;
+}
+
+.home__subtitle {
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  letter-spacing: 3px;
+}
+
+.home__title {
+  font-size: var(--biggest-font-size);
+  font-family: var(--second-font);
+  color: var(--title-color);
+}
+
+.home__description {
+  margin-bottom: 2.5rem;
+}
+
+.home__button {
+  display: inline-block;
+  background: var(--gradient-color);
+  color: var(--white-color);
+  width: max-content;
+  padding: 1rem 2rem;
+  border-radius: .75rem;
+  box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 305px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .home__title {
+    font-size: 2rem;
+  }
+}
+
+/* For taller devices */
+@media screen and (min-width: 376px) and (min-height: 800px) {
+  .home__container {
+    padding-top: 10rem;
+  }
+  .home__images img {
+    width: 700px;
+    left: -12rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 480px) {
+  
+}
+
+/* For large devices */
+@media screen and (min-width: 1023px) {
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+    column-gap: 4rem;
+  }
+  .nav__toggle, 
+  .nav__close {
+    display: none;
+  }
+  .nav__menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav__list {
+    flex-direction: row;
+    column-gap: 5rem;
+  }
+  .nav__buttons {
+    flex-direction: row;
+    column-gap: 3rem;
+  }
+  .nav__logo {
+    width: 48px;
+  }
+
+  .home__content {
+    max-width: 550px;
+  }
+  .home__data {
+    row-gap: 1rem;
+  }
+  .home__subtitle {
+    font-size: var(--normal-font-size);
+  }
+  .home__description {
+    margin-bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .container {
+    margin-inline: auto;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .home__container {
+    height: 950px;
+    padding-top: 10rem;
+  }
+  .home__bird-1, .home__bird-2 {
+    width: 80px;
+  }
+  .home__bird-1 {
+    bottom: -7rem;
+    left: -7rem;
+  }
+  .home__bird-2 {
+    top: 0;
+    right: -6rem;
+  }
+  .home__images img {
+    bottom: -3rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: .6rem;
+    border-radius: .5rem;
+    background-color: hsl(220, 24%, 15%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(220, 24%, 25%);
+    border-radius: .5rem;
+  }
+}
+
+/* For 2K resolutions (2048 x 1152) */
+@media screen and (min-width: 2048px) {
+  .container {
+    max-width: 1300px;
+  }
+  .home__container {
+    height: 1200px;
+    padding-top: 15rem;
+  }
+}
+.main-image {
+  width: 500%;      
+  max-width: 800px; 
+  display: block;   
+  margin: 20px auto; 
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+/*towns*/
+
+details {
+    margin: 10rem 0;
+    border: 1px solid var(--first-color);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+summary {
+    padding: 0rem;
+    cursor: pointer;
+    background-color: var(--gradient-color);
+    color: var(--white-color);
+    font-weight: var(--font-semi-bold);
+}
+
+summary::-webkit-details-marker { /* Hide default arrow in Chrome & Safari */
+  display: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--first-color);
+    background-color: var(--body-color);
+}
+
+ul li:first-child { /* Removes the border for the first item */
+    border-top: none;
+}
+
+ul li:hover {
+    background-color: var(--white-color);
+}
+
+/* Style for the dropdown containing town names */
+.select-town {
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+/* Style for the town names in the summary element */
+summary {
+  color: var(--text-color); 
+  font-family: var(--body-font); 
+  font-size: var(--normal-font-size); 
+  font-weight: var(--font-medium); 
+  cursor: pointer; 
+  padding: 10px; 
+  transition: color 0.3s; 
+}
+
+/* Hover effect for the summary element */
+summary:hover {
+  color: var(--highlight-color); /* Change to a different color or shade for hover effect */
+}
+
+.spot__title {
+  font-size: 8cqmax;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.spot__description {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: justify;
+  font-size: 1.2rem;
+}
+
+.spot__map {
+  margin-top: 30px;
+}
+
+#map {
+  flex: auto;
+  width: 100px;  /* Adjust the width as per your preference */
+  height: 700px; /* Adjust the height as per your preference */
+  border-radius: 50px;  /* Optional: Adds rounded corners */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: Adds a light shadow */
+
+}
+.map-description-container {
+  display: flex;
+  gap: 2rem; /* Adjust the space between the map and description */
+  align-items: flex-start; /* To align the top of the map and description */
+}
+
+#map, 
+.spot__description {
+  flex: 1; /* This ensures they take up equal width */
+}
+
+#map {
+  height: 400px; /* Adjust the height as necessary */
+  background-color: #f5f5f5; /* Default background color while the map loads */
+  margin-right: 20%;
+}
+
+.spot__description {
+  max-width: 50%; /* Ensures it doesn't expand beyond half the container's width */
+  padding: 1rem; /* For some breathing space around the description */
+}
+.map-description-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bordered-list {
+  flex: 1;
+  margin-left: 20%;
+  margin-right: 20px; /* To provide spacing between the list and the map */
+  background-color: #f5f5f5; /* Added background color to the entire list */
+  border-radius: 5px; /* Optional rounded corners for the list */
+  padding: 5px 0; /* Padding to give space at the top and bottom of the list */
+}
+
+.bordered-list li {
+  padding: 10px;
+  margin: 5px 0;
+  list-style-type: none; /* To remove bullet points */
+}
+
+#map {
+  flex: 1;
+  height: 400px; /* Example height, adjust as needed */
+}
+
+
+
+
+
+
