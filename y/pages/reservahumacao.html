@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
-    <link rel="stylesheet" href="/y/assets/css/style.css">
-    <title>FishSpotPR - Carraizo</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>FishSpotPR - reservahumacao</title>
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <a href="index.html" class="logo">
-                <img src="assets/img/fishing.png" alt="logo">
+            <a href="/index.html" class="logo">
+                <img src="/assets/img/fishing.png" alt="logo">
             </a>FishSpotPR
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/index.html">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Team</a></li>
                 <li><a href="#">Contact</a></li>
@@ -32,11 +32,11 @@
     </header>
 
     <main class="main">
-        <h1 class="spot__title">Las Curias</h1>
-        <img src="assets/img/las curias.jpg" alt="Las Curias" class="main-image">
+        <h1 class="spot__title">Reserva Natural de Humacao</h1>
+        <img src="/assets/img/ReservaNaturalHumacao.jpg" alt="reservahumacao" class="main-image">
         <div class="map-description-container">
             <ul class="bordered-list">
-                <li>Location: San Juan</li>
+                <li>Location: Trujillo Alto</li>
                 <li>Popular for: Cichlid, tilapia, carp, freshwater snook</li>
                 <li>Environment: Serene and suitable for both professional and amateur fishers</li>
                 <li>Best time to visit: Early in the afternoon</li>
@@ -55,7 +55,7 @@
         </div>
         <script>
          let directionsService, directionsRenderer, map;
-         const carraizo = { lat: 18.341559296159716, lng: -66.04670346077584 };
+         const carraizo = { lat: 18.150859470883987, lng: -65.77210261532838 };
      
          function initMap() {
              map = new google.maps.Map(document.getElementById("map"), {
@@ -96,7 +96,7 @@
      
          document.addEventListener('DOMContentLoaded', function() {
              const apiKey = 'e48d58164b414033abecb9ab9a7e9625';
-             const city = 'San Juan';
+             const city = 'Humacao';
      
              fetch(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}&units=I`)
                  .then(response => response.json())

@@ -47,9 +47,10 @@ nav ul {
 nav li {
     cursor: pointer;
     font-weight: 500;
-    padding: 20px 70px;
+    padding: 4px 60px;
     border-radius: 30px;
     transition: background-color 0.3s;
+    font-size: large;
 }
 
 nav li:hover {
@@ -196,7 +197,7 @@ ul {
 li {
     border: 1px solid #e8e8e8;   /* Border for cards */
     border-radius: 8px;   /* Rounded corners for cards */
-    margin-bottom: 10px;  /* Spacing between cards */
+    margin-bottom: 5px;  /* Spacing between cards */
     background-color: #fff;   /* White background for each card */
     transition: box-shadow 0.3s, transform 0.3s;   /* Transition for hover effect */
 }
@@ -250,7 +251,7 @@ li a:hover {
     text-align: center;
     width: 250px;
     margin: 20px auto;
-    background-image: url(/y/assets/img/clouds1.jpg);
+    background-image: url(assets/img/clouds.jpg);
 }
 
 .temp-text {

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>FishSpotPR - Las Curias</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo">
+                <img src="/assets/img/fishing.png" alt="logo">
+            </a>FishSpotPR
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <!--<button class="login">Log In</button> -->
+            <!--<button class="cart">🛒</button> -->
+        </div>
+    </header>
+
+    <main class="main">
+        <h1 class="spot__title">Las Curias</h1>
+        <img src="/assets/img/las curias.jpg" alt="Las Curias" class="main-image">
+        <div class="map-description-container">
+            <ul class="bordered-list">
+                <li>Location: San Juan</li>
+                <li>Popular for: Cichlid, tilapia, carp, freshwater snook</li>
+                <li>Environment: Serene and suitable for both professional and amateur fishers</li>
+                <li>Best time to visit: Early in the afternoon</li>
+                <li>Recommendation: Boat or Kayak </li>
+            </ul>
+            <div class="container">
+               <div id="weather-container" class="weather-box">
+                  <h1>Weather:</h1>
+                  <h2 id="city-name"></h2>
+                  <p id="temperature" class="temp-text"></p>
+                  <p id="weather-description" class="weather-desc"></p>
+               </div>
+               <div id="map"></div>
+               <button id="getDirections">Get Directions</button>
+           </div>
+        </div>
+        <script>
+         let directionsService, directionsRenderer, map;
+         const carraizo = { lat: 18.341559296159716, lng: -66.04670346077584 };
+     
+         function initMap() {
+             map = new google.maps.Map(document.getElementById("map"), {
+                 zoom: 14,
+                 center: carraizo,
+             });
+             const marker = new google.maps.Marker({
+                 position: carraizo,
+                 map: map,
+             });
+             directionsService = new google.maps.DirectionsService();
+             directionsRenderer = new google.maps.DirectionsRenderer();
+             directionsRenderer.setMap(map);
+     
+             // Attach the click event here after map initialization
+             document.getElementById("getDirections").addEventListener("click", function() {
+                 const startPos = new google.maps.LatLng(18.4655, -66.1057); 
+                 calculateAndDisplayRoute(directionsService, directionsRenderer, startPos, carraizo);
+             });
+         }
+     
+         function calculateAndDisplayRoute(directionsService, directionsRenderer, start, end) {
+             directionsService.route(
+                 {
+                     origin: start,
+                     destination: end,
+                     travelMode: 'DRIVING'
+                 },
+                 function(response, status) {
+                     if (status === 'OK') {
+                         directionsRenderer.setDirections(response);
+                     } else {
+                         window.alert('Directions request failed due to ' + status);
+                     }
+                 }
+             );
+         }
+     
+         document.addEventListener('DOMContentLoaded', function() {
+             const apiKey = 'e48d58164b414033abecb9ab9a7e9625';
+             const city = 'San Juan';
+     
+             fetch(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}&units=I`)
+                 .then(response => response.json())
+                 .then(data => {
+                     const cityNameElement = document.getElementById('city-name');
+                     const cityFromAPI = data.data[0].city_name;
+                     const weatherDescription = data.data[0].weather.description;
+                     const temperature = data.data[0].temp;
+     
+                     cityNameElement.textContent = cityFromAPI;
+                     document.getElementById('weather-description').textContent = `Weather: ${weatherDescription}`;
+                     document.getElementById('temperature').textContent = `Temperature: ${temperature}°F`;
+                 })
+                 .catch(error => {
+                     console.log("Error fetching weather data: ", error);
+                 });
+         });
+     </script>
+     
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmNUUWBNY38RB4RIBv_xqXgwJU5XP41KE&callback=initMap" async defer></script>
+    </main>
+    <footer>
+        <div class="footer-left">
+            <img src="/assets/img/fishing.png" alt="logo" class="footer-logo">
+            <p>FishSpotPR © 2023</p>
+        </div>
+        <div class="footer-center">
+            <h3>Contact Info</h3>
+            <p>Email: fishspotpr@gmail.com</p>
+            <p>Phone: +1 787-000-0000</p>
+        </div>
+        <div class="footer-right">
+            <h3>Follow us</h3>
+            <ul>
+                <li><a href="#"><img src="assets/img/facebook.png" alt="facebook"></a></li>
+                <li><a href="#"><img src="assets/img/twitter.png" alt="twitter"></a></li>
+                <li><a href="#"><img src="assets/img/instagram.png" alt="instagram"></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
