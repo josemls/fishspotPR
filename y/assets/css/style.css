@@ -41,14 +41,14 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 30px;
+    gap: 120px;
 }
 
 nav li {
     cursor: pointer;
     font-weight: 500;
-    padding: 20px 80px;
-    border-radius: 5px;
+    padding: 20px 70px;
+    border-radius: 30px;
     transition: background-color 0.3s;
 }
 
@@ -140,7 +140,7 @@ footer button {
 footer button:hover {
     background-color: #EAECEE;
 }
-
+/*button for spots*/
 .home__button {
     display: inline-block;
     background:#0c2947;
@@ -150,7 +150,7 @@ footer button:hover {
     border-radius: .75rem;
     box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);
 }
-
+/*town list*/
 details {
     margin-bottom: 25px;
     overflow: hidden;
@@ -186,8 +186,11 @@ details > summary:hover {
 
 ul {
     list-style-type: none;
-    padding-left: 0;   /* Resetting padding to align items properly */
-    margin-top: 10px;  /* Spacing between summary and the first card */
+    padding-left: 0; /* Resetting padding to align items properly */
+    margin: 10px auto; /* Centers the UL horizontally on the page */
+    font-size: 25px; /* Increase the font size for bigger letters */
+    text-align: center; /* Centers the list items' text within each item */
+    max-width: 60%; /* You can adjust this for desired width, it helps with centering */
 }
 
 li {
@@ -215,7 +218,7 @@ li a {
 li a:hover {
     color: #555;
 }
-
+/*list of towns*/
 .details-container {
     display: flex;
     flex-direction: column;
@@ -224,3 +227,63 @@ li a:hover {
     /*height: 200vh;*/
     padding: 50px;
 }
+/*spot title*/
+.spot__title {
+    font-size: 6.0em; /* Makes the h1 bigger */
+    text-align: center; /* Centers the text horizontally */
+    margin: 20px 0; /* Add some space above and below the h1 */
+}
+/*spot picture*/
+.main-image {
+    width: 500%;      
+    max-width: 800px; 
+    display: block;   
+    margin: 20px auto; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*weather box*/
+.weather-box {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    margin: 20px auto;
+    background-image: url(/y/assets/img/clouds1.jpg);
+}
+
+.temp-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.weather-desc {
+    font-style: italic;
+}
+
+#city-name {
+    text-transform: uppercase;
+}
+/* Container for both the map and weather box */
+.container {
+    display: flex;
+    justify-content: center; /* Centers the child elements horizontally */
+    align-items: center; /* Centers the child elements vertically */
+    gap: 25px; /* Gap of 10px between the two boxes */
+    margin: 0 auto; /* Centers the container horizontally on the page */
+    padding: 50px 0; /* Provides some vertical spacing */
+    max-width: 60%; /* You can adjust this value for desired width */
+}
+
+/* Styling for the map and weather box to ensure they are the same size */
+#map, .weather-box {
+    flex: 1; /* Makes sure they occupy equal space */
+    width: 10%; /* Taking up half the container's width */
+    height: 300px; 
+    border-radius: 50px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px; /* Adds some internal spacing */
+}
+
