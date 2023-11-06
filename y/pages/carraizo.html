@@ -7,6 +7,9 @@
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
     <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script type="module" src="/firebaseconfig.js"></script>
+
     <title>FishSpotPR - Carraizo</title>
 </head>
 
@@ -20,7 +23,7 @@
         <nav>
             <ul>
                 <li><a href="/index.html">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/about.html">About</a></li>
                 <li><a href="#">Team</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -31,7 +34,7 @@
         </div>
     </header>
 
-    <main class="main">
+    <main class="main" data-town-id="Carraizo">
         <h1 class="spot__title">Carraizo</h1>
         <img src="/assets/img/Lago-Carraizo-Trujillo-Alto07089_1EA5DCC0-5056-A36A-08880529DE61CEAF-1ea5d7ef5056a36_1ea5e000-5056-a36a-0839f32b250b0ada.jpg" alt="Carraizo" class="main-image">
         <div class="map-description-container">
@@ -53,70 +56,125 @@
                <button id="getDirections">Get Directions</button>
            </div>
         </div>
+
         <script>
-         let directionsService, directionsRenderer, map;
-         const carraizo = { lat: 18.329085911249056, lng: -66.01727465521121 };
-     
-         function initMap() {
-             map = new google.maps.Map(document.getElementById("map"), {
-                 zoom: 14,
-                 center: carraizo,
-             });
-             const marker = new google.maps.Marker({
-                 position: carraizo,
-                 map: map,
-             });
-             directionsService = new google.maps.DirectionsService();
-             directionsRenderer = new google.maps.DirectionsRenderer();
-             directionsRenderer.setMap(map);
-     
-             // Attach the click event here after map initialization
-             document.getElementById("getDirections").addEventListener("click", function() {
-                 const startPos = new google.maps.LatLng(18.4655, -66.1057); 
-                 calculateAndDisplayRoute(directionsService, directionsRenderer, startPos, carraizo);
-             });
-         }
-     
-         function calculateAndDisplayRoute(directionsService, directionsRenderer, start, end) {
-             directionsService.route(
-                 {
-                     origin: start,
-                     destination: end,
-                     travelMode: 'DRIVING'
-                 },
-                 function(response, status) {
-                     if (status === 'OK') {
-                         directionsRenderer.setDirections(response);
-                     } else {
-                         window.alert('Directions request failed due to ' + status);
-                     }
-                 }
-             );
-         }
-     
-         document.addEventListener('DOMContentLoaded', function() {
-             const apiKey = 'e48d58164b414033abecb9ab9a7e9625';
-             const city = 'Trujillo Alto';
-     
-             fetch(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}&units=I`)
-                 .then(response => response.json())
-                 .then(data => {
-                     const cityNameElement = document.getElementById('city-name');
-                     const cityFromAPI = data.data[0].city_name;
-                     const weatherDescription = data.data[0].weather.description;
-                     const temperature = data.data[0].temp;
-     
-                     cityNameElement.textContent = cityFromAPI;
-                     document.getElementById('weather-description').textContent = `Weather: ${weatherDescription}`;
-                     document.getElementById('temperature').textContent = `Temperature: ${temperature}°F`;
-                 })
-                 .catch(error => {
-                     console.log("Error fetching weather data: ", error);
-                 });
-         });
-     </script>
-     
+            // Your JavaScript code goes here
+            let directionsService, directionsRenderer, map;
+            const carraizo = { lat: 18.329085911249056, lng: -66.01727465521121 };
+        
+            function initMap() {
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 14,
+                    center: carraizo,
+                });
+                const marker = new google.maps.Marker({
+                    position: carraizo,
+                    map: map,
+                });
+                directionsService = new google.maps.DirectionsService();
+                directionsRenderer = new google.maps.DirectionsRenderer();
+                directionsRenderer.setMap(map);
+        
+                // Attach the click event here after map initialization
+                document.getElementById("getDirections").addEventListener("click", function() {
+                    const startPos = new google.maps.LatLng(18.4655, -66.1057); 
+                    calculateAndDisplayRoute(directionsService, directionsRenderer, startPos, carraizo);
+                });
+            }
+        
+            function calculateAndDisplayRoute(directionsService, directionsRenderer, start, end) {
+                directionsService.route(
+                    {
+                        origin: start,
+                        destination: end,
+                        travelMode: 'DRIVING'
+                    },
+                    function(response, status) {
+                        if (status === 'OK') {
+                            directionsRenderer.setDirections(response);
+                        } else {
+                            window.alert('Directions request failed due to ' + status);
+                        }
+                    }
+                );
+            }
+        
+            document.addEventListener('DOMContentLoaded', function() {
+                const apiKey = 'e48d58164b414033abecb9ab9a7e9625';
+                const city = 'Trujillo Alto';
+        
+                fetch(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}&units=I`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const cityNameElement = document.getElementById('city-name');
+                        const cityFromAPI = data.data[0].city_name;
+                        const weatherDescription = data.data[0].weather.description;
+                        const temperature = data.data[0].temp;
+        
+                        cityNameElement.textContent = cityFromAPI;
+                        document.getElementById('weather-description').textContent = `Weather: ${weatherDescription}`;
+                        document.getElementById('temperature').textContent = `Temperature: ${temperature}°F`;
+                    })
+                    .catch(error => {
+                        console.log("Error fetching weather data: ", error);
+                    });
+            });
+        </script>
+        
+        <script type="module">
+            import { db } from '/firebaseconfig.js';
+            import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot, doc } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+
+            let townId = "carraizo";
+            let commentsRef = collection(db, "towns", townId, "comments");
+
+             // Handle form submission to add a new comment
+    document.getElementById('comment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const commentInput = document.getElementById('comment-input');
+        const commentText = commentInput.value.trim();
+
+        if (commentText) {
+            addDoc(commentsRef, {
+                text: commentText,
+                timestamp: serverTimestamp()
+            })
+            .then(() => {
+                commentInput.value = ''; // Clear the input field
+            })
+            .catch(error => {
+                console.error("Error adding comment: ", error);
+            });
+        }
+    });
+
+    // Display comments
+    const q = query(commentsRef, orderBy("timestamp", "desc"));
+    onSnapshot(q, snapshot => {
+        let changes = snapshot.docChanges();
+        changes.forEach(change => {
+            if (change.type === 'added') {
+                let commentData = change.doc.data();
+                let commentElement = document.createElement('li');
+                commentElement.textContent = commentData.text;
+                document.getElementById('comments-list').appendChild(commentElement);
+            }
+        });
+    });
+
+</script>
+
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmNUUWBNY38RB4RIBv_xqXgwJU5XP41KE&callback=initMap" async defer></script>
+     
+        <section class="comment-section">
+            <h2>Comments</h2>
+            <ul id="comments-list"></ul>
+            <form id="comment-form">
+                <textarea id="comment-input" placeholder="Add your comment..." required></textarea>
+                <button type="submit">Post Comment</button>
+            </form>
+        </section>    
+        
     </main>
     <footer>
         <div class="footer-left">
