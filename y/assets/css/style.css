@@ -26,13 +26,13 @@ header {
 }
 .logo {
     display: flex;
-    align-items: center; /* To vertically center the text and the image */
+    align-items: center; 
 }
 
 .logo img {
-    height: calc(1.6em + 24px); /* line-height * font-size */
-    width: auto; /* To preserve the image aspect ratio */
-    margin-left: 15px; /* Some spacing between the text and the image */
+    height: calc(1.6em + 24px); 
+    width: auto;
+    margin-left: 15px; 
 }
 
 
@@ -124,6 +124,14 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
 }
+/*.decor-image img {
+    width: 85%;      
+    max-width: 800px; 
+    display: block;   
+    margin: 20px auto; 
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0); 
+  }*/
 
 footer {
     display: flex;
@@ -170,8 +178,8 @@ details > summary {
     background-color: #0c2947;
     transition: all 0.3s;
     color: #EAECEE;
-    font-weight: 500;  /* Slight boldness for readability */
-    border-radius: 8px;   /* Added border-radius for the summary element */
+    font-weight: 500;  
+    border-radius: 8px;   
     text-align: center;
     width: 800px;
 }
@@ -182,24 +190,24 @@ details > summary::-webkit-details-marker {
 
 details > summary:hover {
     background-color: #f0f0f0;
-    color: #333;   /* Darker text on hover for better contrast */
+    color: #333;   
 }
 
 ul {
     list-style-type: none;
-    padding-left: 0; /* Resetting padding to align items properly */
-    margin: 10px auto; /* Centers the UL horizontally on the page */
-    font-size: 25px; /* Increase the font size for bigger letters */
-    text-align: center; /* Centers the list items' text within each item */
-    max-width: 60%; /* You can adjust this for desired width, it helps with centering */
+    padding-left: 0; 
+    margin: 10px auto; 
+    font-size: 25px; 
+    text-align: center; 
+    max-width: 60%; 
 }
 
 li {
-    border: 1px solid #e8e8e8;   /* Border for cards */
-    border-radius: 8px;   /* Rounded corners for cards */
-    margin-bottom: 5px;  /* Spacing between cards */
-    background-color: #fff;   /* White background for each card */
-    transition: box-shadow 0.3s, transform 0.3s;   /* Transition for hover effect */
+    border: 1px solid #e8e8e8;   
+    border-radius: 8px;  
+    margin-bottom: 5px;  
+    background-color: #fff;   
+    transition: box-shadow 0.3s, transform 0.3s;   
 }
 
 /*li:hover {
@@ -230,9 +238,9 @@ li a:hover {
 }
 /*spot title*/
 .spot__title {
-    font-size: 6.0em; /* Makes the h1 bigger */
-    text-align: center; /* Centers the text horizontally */
-    margin: 20px 0; /* Add some space above and below the h1 */
+    font-size: 6.0em; 
+    text-align: center; 
+    margin: 20px 0; 
 }
 /*spot picture*/
 .main-image {
@@ -270,22 +278,22 @@ li a:hover {
 /* Container for both the map and weather box */
 .container {
     display: flex;
-    justify-content: center; /* Centers the child elements horizontally */
-    align-items: center; /* Centers the child elements vertically */
-    gap: 25px; /* Gap of 10px between the two boxes */
-    margin: 0 auto; /* Centers the container horizontally on the page */
-    padding: 50px 0; /* Provides some vertical spacing */
-    max-width: 60%; /* You can adjust this value for desired width */
+    justify-content: center; 
+    align-items: center; 
+    gap: 25px; 
+    margin: 0 auto; 
+    padding: 50px 0; 
+    max-width: 60%; 
 }
 
-/* Styling for the map and weather box to ensure they are the same size */
+/* Styling for the map and weather box  */
 #map, .weather-box {
-    flex: 1; /* Makes sure they occupy equal space */
-    width: 10%; /* Taking up half the container's width */
+    flex: 1; 
+    width: 10%; 
     height: 300px; 
     border-radius: 50px; 
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 20px; /* Adds some internal spacing */
+    padding: 20px; 
 }
 
 .about-section {
@@ -334,13 +342,131 @@ li a:hover {
 }
 
 .team-member img {
-    border-radius: 76%; /* Creates the circular images */
-    width: 325px; /* Adjust as needed */
+    border-radius: 76%; 
+    width: 325px; 
     height: 396px;
 }
 
 .team-member h3 {
     margin-top: 10px;
     font-size: 1.2em;
+}
+
+.comment-section {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.comment-section h2 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px; 
+}
+
+.comment-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 18px;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.comments-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.comments-list li {
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.commenter-name {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: -40px; 
+}
+
+.comment-profile {
+    width: 106px; 
+    height: auto; 
+    border-radius: 50%; 
+    margin-bottom: -40px; 
+  }
+
+.decor-image img {
+    width: 50%;      
+    max-width: 800px; 
+    display: block;   
+    margin: 20px auto; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgb(0, 0, 0); 
+  }
+  
+  /* Carousel Styles */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    margin: auto;
+}
+
+.carousel-slide {
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+
+/* Carousel Controls */
+.carousel-control-prev, .carousel-control-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.carousel-control-prev {
+    left: 0;
 }
 
