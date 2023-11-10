@@ -13,13 +13,13 @@
 <body>
     <header>
         <div class="logo">
-            <a href="index.html" class="logo">
+            <a href="/index.html" class="logo">
                 <img src="/assets/img/fishing.png" alt="logo">
             </a>FishSpotPR
         </div>
         <nav>
             <ul>
-                <li><a href="index.html"></a>Home</li>
+                <li><a href="/index.html"></a>Home</li>
                 <li><a href="/pages/about.html"></a>About</li>
                 <li><a href="/pages/team.html"></a>Team</li>
                 <li><a href="#"></a>Contact</li>
@@ -115,8 +115,75 @@
                  });
          });
      </script>
+     <script type="module">
+        import { db } from '/firebaseconfig.js';
+        import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+      
+        let townId = "lascurias";
+        let commentsRef = collection(db, "towns", townId, "comments");
+      
+        // Handle form submission to add a new comment
+        document.getElementById('comment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const commenterNameInput = document.getElementById('commenter-name');
+            const commentInput = document.getElementById('comment-input');
+            const commenterName = commenterNameInput.value.trim();
+            const commentText = commentInput.value.trim();
+      
+            if (commentText && commenterName) {
+                addDoc(commentsRef, {
+                    name: commenterName,
+                    text: commentText,
+                    timestamp: serverTimestamp()
+                })
+                .then(() => {
+                    commenterNameInput.value = ''; // Clear the name input field
+                    commentInput.value = ''; // Clear the comment input field
+                })
+                .catch(error => {
+                    console.error("Error adding comment: ", error);
+                });
+            }
+        });
+      
+        // Display comments
+        const q = query(commentsRef, orderBy("timestamp", "desc"));
+        onSnapshot(q, snapshot => {
+            let changes = snapshot.docChanges();
+            changes.forEach(change => {
+                if (change.type === 'added') {
+                    let commentData = change.doc.data();
+                    let commentElement = document.createElement('li');
+      
+                    // Create a span for the name
+                    let nameElement = document.createElement('span');
+                    nameElement.textContent = commentData.name + ': ';
+                    nameElement.classList.add('commenter-name-display');
+      
+                    // Append name to comment element
+                    commentElement.appendChild(nameElement);
+                    
+                    // Append the comment text
+                    commentElement.appendChild(document.createTextNode(commentData.text));
+      
+                    document.getElementById('comments-list').appendChild(commentElement);
+                }
+            });
+        });
+      </script>
      
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmNUUWBNY38RB4RIBv_xqXgwJU5XP41KE&callback=initMap" async defer></script>
+        <section class="comment-section">
+            <div class="comment-profile">
+            <img src="/assets/img/profileemblem2.jpg" alt="profile" class="comment-profile" /></div>
+            <h2>Comments</h2>
+            <form id="comment-form" class="comment-form">
+                <input type="text" id="commenter-name" class="commenter-name" placeholder="Your name..." required />
+                <textarea id="comment-input" class="comment-input" placeholder="Add your comment..." required></textarea>
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+            <ul id="comments-list" class="comments-list"></ul>
+        </section>
     </main>
     <footer>
         <div class="footer-left">
