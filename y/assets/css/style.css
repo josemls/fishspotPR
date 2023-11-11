@@ -57,10 +57,23 @@ nav li:hover {
     background-color: #EAECEE;
 }
 
-.header-right {
-    display: flex;
-    gap: 15px;
+.header-right a,
+.header-right a:visited { /* Apply the same style to both unvisited and visited links */
+    display: inline-block;
+    background: #0c2947;
+    color: #F5F5F7;
+    padding: 1rem 2rem;
+    border-radius: .75rem;
+    /*box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);*/ 
+    text-decoration: none; /* Assuming you want to remove the underline from links */
 }
+
+.header-right a:hover,
+.header-right a:active { /* Styles for hover and active states */
+    background-color: #0056b3; /* Darker shade for hover/active states */
+    /* Other hover/active styles if needed */
+}
+
 
 button {
     padding: 10px 20px;
@@ -115,15 +128,23 @@ button:hover {
 
 .decor {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    padding: 70px 10%;
-    background-color: #fff;
-    margin-top: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    justify-content: flex-start; /* Aligns children (including images) to the start of the flex container, which is the left side */
+    /* Other styles... */
 }
+.decor-title {
+    align-items: center;
+    text-align: center;
+}
+.decor-image img {
+    width: 84%;      
+    max-width: 800px; 
+    display: block;   
+    /*margin: 20px auto;*/ 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    margin-left: -187px; 
+  }
 /*.decor-image img {
     width: 85%;      
     max-width: 800px; 
@@ -152,13 +173,22 @@ footer button:hover {
 /*button for spots*/
 .home__button {
     display: inline-block;
-    background:#0c2947;
+    background: #0c2947;
     color: #F5F5F7;
     width: max-content;
     padding: 1rem 2rem;
     border-radius: .75rem;
     box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
 }
+
+.home__button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+    box-shadow: 0 30px 40px hsla(210, 54%, 24%, .35); /* Slightly larger shadow for a "lifted" effect */
+    transform: translateY(-5px); /* Moves the button up by 5 pixels */
+}
+
+
 /*town list*/
 details {
     margin-bottom: 25px;
@@ -199,7 +229,7 @@ ul {
     margin: 10px auto; 
     font-size: 17px; 
     /*text-align: center; */
-    max-width: 60%; 
+    max-width: 100%; 
 }
 
 li {
@@ -428,14 +458,7 @@ li a:hover {
     margin-bottom: -40px; 
   }
 
-.decor-image img {
-    width: 50%;      
-    max-width: 800px; 
-    display: block;   
-    margin: 20px auto; 
-    border-radius: 15px; 
-    box-shadow: 0 4px 8px rgb(0, 0, 0); 
-  }
+
 
 #contact-form {
     max-width: 600px;
@@ -645,4 +668,36 @@ li a:hover {
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav__button {
+    display: inline-block;
+    background:#0c2947;
+    color: #F5F5F7;
+    width: max-content;
+    padding: 1rem 2rem;
+    border-radius: .75rem;
+    box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);
+}
+
+.info-card {
+    background: #e2e1e7; /* Background color for the card */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the card */
+    order: 2; /* Ensure that the card appears on the right */
+    /* Adjust width as necessary or remove if you want it to be sized by content */
+    width: 89%; /* You can set a fixed width for the card */
+    margin-left: auto; /* Pushes the card to the right side */
+    margin-right: -163px;
+    height: 240px;
+    font-size: 24px;
+}
+.decor-content {
+    display: flex;
+    justify-content: space-between; /* This will place the items on opposite ends */
+    align-items: center; /* Aligns items vertically in the center */
+    padding: 20px;
+    max-width: 1200px; /* Adjust the max width as needed */
+    margin: 0 auto; /* Center the content horizontally */
 }
