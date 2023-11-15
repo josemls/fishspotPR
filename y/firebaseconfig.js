@@ -110,4 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.signInWithGoogle = signInWithGoogle;
     window.userSignOut = userSignOut;
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const navMenu = document.querySelector('nav ul');
+
+    dropdownToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+});
+
+
     export { db, auth, signInWithGoogle, userSignOut };

@@ -701,3 +701,54 @@ li a:hover {
     max-width: 1200px; /* Adjust the max width as needed */
     margin: 0 auto; /* Center the content horizontally */
 }
+
+
+
+/* Mobile Responsive Styles */
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* ... existing styles ... */
+
+    .dropdown-toggle {
+        display: none; /* Hide by default, shown only in mobile view */
+        background: #0c2947;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        margin-left: auto; /* Push to the right of header */
+        font-size: 16px; /* Make the font larger for better visibility */
+    }
+
+    /* Show the dropdown toggle in mobile view */
+    header {
+        /* ... */
+        position: relative; /* Needed for absolute positioning of dropdown */
+    }
+
+    nav ul {
+        display: none; /* Hide the nav menu */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position directly below header */
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    nav ul.active {
+        display: flex; /* Show the nav menu when active */
+    }
+
+    nav li {
+        width: 100%; /* Full width for nav items */
+        text-align: center; /* Center the text */
+    }
+
+    .dropdown-toggle {
+        display: block; /* Show the dropdown toggle */
+    }
+}
+
