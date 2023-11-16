@@ -388,7 +388,44 @@ li a:hover {
     margin: auto;
     padding: 20px;
     background: #f9f9f9;
-    border-radius: 8px;
+    border-radius: 8px; #suggestion-form {
+            list-style-type: none;
+            margin: 30px auto;
+            padding: 0;
+            background: #fff;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 817px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            margin-right: 125px;
+            padding: 15px 30px;
+            display: block; /* Make sure the form is displayed */
+        }
+
+        #suggestion-form input[type="text"],
+        #suggestion-form textarea {
+            width: calc(100% - 60px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #eeeeee;
+            border-radius: 4px;
+        }
+
+        #suggestion-form button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #suggestion-form button:hover {
+            background-color: #555;
+        }
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
 }
@@ -441,7 +478,7 @@ li a:hover {
     border-radius: 4px;
     padding: 10px 20px;
     margin-bottom: 10px;
-    width: 159%;
+    width: 97%;
 }
 
 .commenter-name {
@@ -637,34 +674,34 @@ li a:hover {
     }
 
     .team-members {
-        flex-direction: column; /* Stack team members vertically on mobile */
+        flex-direction: column; 
     }
 
     .team-member img {
-        width: 90%; /* Adjust width of team member images for mobile */
-        margin: 0 auto; /* Center team member images on mobile */
+        width: 90%; 
+        margin: 0 auto; 
     }
 
     .comments-list li,
     .bordered-list li {
-        width: 100%; /* Full width list items on mobile */
+        width: 100%; 
     }
 
     .comment-profile {
-        width: 50px; /* Smaller profile images on mobile */
-        height: 50px; /* Match height to maintain aspect ratio */
+        width: 50px; 
+        height: 50px; 
     }
 }
 
 .spot-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Adjust this as needed */
-    gap: 20px; /* This adds space between the image and the list */
+    align-items: flex-start; 
+    gap: 20px; 
 }
 
 .spot-image {
-    max-width: 50%; /* Adjust this value as needed */
+    max-width: 50%; 
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -686,8 +723,8 @@ li a:hover {
     border-radius: 10px; /* Rounded corners for the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the card */
     order: 2; /* Ensure that the card appears on the right */
-    /* Adjust width as necessary or remove if you want it to be sized by content */
-    width: 89%; /* You can set a fixed width for the card */
+    
+    width: 89%; 
     margin-left: auto; /* Pushes the card to the right side */
     margin-right: -163px;
     height: 240px;
@@ -698,8 +735,8 @@ li a:hover {
     justify-content: space-between; /* This will place the items on opposite ends */
     align-items: center; /* Aligns items vertically in the center */
     padding: 20px;
-    max-width: 1200px; /* Adjust the max width as needed */
-    margin: 0 auto; /* Center the content horizontally */
+    max-width: 1200px; 
+    margin: 0 auto;
 }
 
 
@@ -707,7 +744,7 @@ li a:hover {
 /* Mobile Responsive Styles */
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-    /* ... existing styles ... */
+    /* ... existing styles ... */Humacao
 
     .dropdown-toggle {
         display: none; /* Hide by default, shown only in mobile view */
@@ -744,11 +781,11 @@ li a:hover {
 
     nav li {
         width: 100%; /* Full width for nav items */
-        text-align: center; /* Center the text */
+        text-align: center;
     }
 
     .dropdown-toggle {
-        display: block; /* Show the dropdown toggle */
+        display: block; 
     }
 }
 

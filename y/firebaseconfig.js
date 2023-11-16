@@ -41,44 +41,43 @@ async function userSignOut() {
 // Function to handle the suggestion form submission
 async function submitSuggestion(event) {
     event.preventDefault(); // Prevent the default form submit action
-  
-    // Get form data
-    const spotName = document.getElementById('spot-name').value;
-    const description = document.getElementById('description').value;
-    // Add more fields as needed
-  
+
+    // Get data from the form
+    const formData = {
+        nameofspot: document.getElementById('nameofspot').value,
+        location: document.getElementById('location').value,
+        popularFor: document.getElementById('popular-for').value,
+        typeOfFishing: document.getElementById('type-of-fishing').value,
+        environment: document.getElementById('environment').value,
+        access: document.getElementById('access').value,
+        facilities: document.getElementById('facilities').value,
+        bestTimeToVisit: document.getElementById('best-time-to-visit').value,
+        safetyConsiderations: document.getElementById('safety-considerations').value,
+        recommendation: document.getElementById('recommendation').value,
+        timestamp: serverTimestamp(),
+        userId: auth.currentUser ? auth.currentUser.uid : null
+    };
+
     // Submit the suggestion to Firestore
     try {
-      await addDoc(collection(db, 'suggestions'), {
-        spotName,
-        description,
-        // Add more fields as needed
-        userId: auth.currentUser.uid, // Assuming you want to track which user made the suggestion
-        timestamp: serverTimestamp() // Timestamp of the suggestion
-      });
-      console.log('Suggestion submitted successfully');
-      // Clear the form or display a success message
+        await addDoc(collection(db, 'fishingSuggestions'), formData);
+        console.log('Fishing suggestion submitted successfully');
+        // Optionally, clear the form here
     } catch (error) {
-      console.error('Error submitting suggestion:', error);
-      // Handle errors, such as displaying an error message to the user
+        console.error('Error submitting suggestion:', error);
     }
 }
 
-// Add a realtime listener for auth state changes
+// Realtime listener for auth state changes
 onAuthStateChanged(auth, (user) => {
-    // Ensure you have elements with these IDs in your HTML
     const signInButton = document.getElementById('sign-in-button');
     const signOutButton = document.getElementById('sign-out-button');
-    const suggestionFormContainer = document.getElementById('suggestion-form-container');
-    const loginPrompt = document.getElementById('login-prompt');
     const userNameDisplay = document.getElementById('user-name');
 
     if (user) {
         // User is signed in
         if (signInButton) signInButton.style.display = 'none';
         if (signOutButton) signOutButton.style.display = 'block';
-        if (suggestionFormContainer) suggestionFormContainer.style.display = 'block';
-        if (loginPrompt) loginPrompt.style.display = 'none';
         if (userNameDisplay) {
             userNameDisplay.textContent = `Hello, ${user.displayName || 'User'}`;
             userNameDisplay.style.display = 'block';
@@ -87,8 +86,6 @@ onAuthStateChanged(auth, (user) => {
         // No user is signed in
         if (signInButton) signInButton.style.display = 'block';
         if (signOutButton) signOutButton.style.display = 'none';
-        if (suggestionFormContainer) suggestionFormContainer.style.display = 'none';
-        if (loginPrompt) loginPrompt.style.display = 'block';
         if (userNameDisplay) {
             userNameDisplay.textContent = '';
             userNameDisplay.style.display = 'none';
@@ -96,28 +93,17 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-// Make sure DOM is loaded before attaching event listeners
+// DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', () => {
-    // Event listener for the suggestion form
     const form = document.getElementById('suggestion-form');
     if (form) {
         form.addEventListener('submit', submitSuggestion);
     }
-    
-    
+
     // Add the signInWithGoogle and userSignOut functions to the window object
     // to make them accessible from the HTML
     window.signInWithGoogle = signInWithGoogle;
     window.userSignOut = userSignOut;
 });
-document.addEventListener('DOMContentLoaded', () => {
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const navMenu = document.querySelector('nav ul');
 
-    dropdownToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-});
-
-
-    export { db, auth, signInWithGoogle, userSignOut };
+export { db, auth, signInWithGoogle, userSignOut };

@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/style.css">
     <title>About FishSpotPR</title>
-</head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F5F5F7;
+            color: #333;
+            line-height: 1.6;
+        }
 
+        /* Suggestion Form Styles */
+        #suggestion-form {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #suggestion-form input[type="text"],
+        #suggestion-form textarea {
+            width: 96%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #suggestion-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        #suggestion-form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #suggestion-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
 <body>
     <header>
         <div class="logo">
@@ -17,36 +62,38 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/index.html"></a>Home</li>
-                <li><a href="/pages/about.html"></a>About</li>
-                <li><a href="/pages/team.html"></a>Team</li>
-                <li><a href="#"></a>Contact</li>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+                <li><a href="/pages/team.html">Team</a></li>
+                <li><a href="#">Suggest a Spot</a></li>
             </ul>
         </nav>
         <div class="header-right">
-            <a href="/pages/towns.html">
-                Locations
-            </a>
+            <a href="/pages/towns.html">Locations</a>
         </div>
     </header>
     <main>
-        <form id="suggestion-form" style="display: none;">
+        <form id="suggestion-form" style="display: block;">
+            <input type="text" id="nameofspot" placeholder="Name of spot" required>
             <input type="text" id="location" placeholder="Location" required>
-            <textarea id="description" placeholder="Description" required></textarea>
-            <!-- Add more fields as needed -->
+            <input type="text" id="popular-for" placeholder="Popular for" required>
+            <input type="text" id="type-of-fishing" placeholder="Type of Fishing" required>
+            <input type="text" id="environment" placeholder="Environment" required>
+            <input type="text" id="access" placeholder="Access" required>
+            <input type="text" id="facilities" placeholder="Facilities" required>
+            <input type="text" id="best-time-to-visit" placeholder="Best time to visit" required>
+            <input type="text" id="safety-considerations" placeholder="Safety Considerations" required>
+            <input type="text" id="recommendation" placeholder="Recommendation" required>
             <button type="submit">Submit Suggestion</button>
         </form>
-        <div id="login-prompt">
+        <!-- <div id="login-prompt">
             <p>Please sign in to submit a fishing spot suggestion.</p>
             <button onclick="signInWithGoogle()">Sign in</button>
-        </div>
-        
+        </div> -->
     </main>
-
     <footer>
-        
+        <!-- Footer Content Here -->
     </footer>
     <script type="module" src="/firebaseconfig.js"></script>
 </body>
-
 </html>
