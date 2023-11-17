@@ -23,4 +23,4 @@ To provide everyone with information about different fishing spot with informati
 
 ### Contact Information:
 
-- Jose M. Acevedo Velez
+- Jose M. Acevedo Velez josepsn1@gmail.com
