@@ -37,9 +37,7 @@
                     </a>
         </nav>
         <div class="header-right">
-            <!--<button class="login">Log In</button> -->
-            <!--<button class="cart">🛒</button> -->
-        </div>
+            
     </header>
 
     <main class="main" data-town-id="Carraizo">
@@ -73,8 +71,7 @@
            </div>
         
 
-        <script>
-            
+           <script>
             let directionsService, directionsRenderer, map;
             const carraizo = { lat: 18.329085911249056, lng: -66.01727465521121 };
         
@@ -83,37 +80,56 @@
                     zoom: 14,
                     center: carraizo,
                 });
+        
                 const marker = new google.maps.Marker({
                     position: carraizo,
                     map: map,
                 });
+        
                 directionsService = new google.maps.DirectionsService();
                 directionsRenderer = new google.maps.DirectionsRenderer();
                 directionsRenderer.setMap(map);
         
-                // Attach the click event here after map initialization
-                document.getElementById("getDirections").addEventListener("click", function() {
-                    const startPos = new google.maps.LatLng(18.4655, -66.1057); 
-                    calculateAndDisplayRoute(directionsService, directionsRenderer, startPos, carraizo);
+                document.getElementById("getDirections").addEventListener("click", () => {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(position => {
+                            const startPos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            calculateAndDisplayRoute(directionsService, directionsRenderer, startPos, carraizo);
+                        }, () => {
+                            handleLocationError(true, map.getCenter());
+                        });
+                    } else {
+                        // Browser doesn't support Geolocation
+                        handleLocationError(false, map.getCenter());
+                    }
                 });
             }
         
             function calculateAndDisplayRoute(directionsService, directionsRenderer, start, end) {
-                directionsService.route(
-                    {
-                        origin: start,
-                        destination: end,
-                        travelMode: 'DRIVING'
-                    },
-                    function(response, status) {
-                        if (status === 'OK') {
-                            directionsRenderer.setDirections(response);
-                        } else {
-                            window.alert('Directions request failed due to ' + status);
-                        }
+                directionsService.route({
+                    origin: start,
+                    destination: end,
+                    travelMode: 'DRIVING'
+                }, (response, status) => {
+                    if (status === 'OK') {
+                        directionsRenderer.setDirections(response);
+                    } else {
+                        window.alert('Directions request failed due to ' + status);
                     }
-                );
+                });
             }
+        
+            function handleLocationError(browserHasGeolocation, pos) {
+                alert(browserHasGeolocation ?
+                    'Error: The Geolocation service failed.' :
+                    'Error: Your browser doesn\'t support geolocation.');
+                map.setCenter(pos);
+            }
+        
+        
         
             document.addEventListener('DOMContentLoaded', function() {
                 const apiKey = 'e48d58164b414033abecb9ab9a7e9625';
